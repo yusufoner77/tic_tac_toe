@@ -277,6 +277,35 @@ public:
     }
   }
 
+  void print_winner()
+  {
+    if (rules->three_in_a_row_in_the_top_row() == "X" ||
+        rules->three_in_a_row_in_the_middle_row() == "X" ||
+        rules->three_in_a_row_in_the_bottom_row() == "X" ||
+        rules->three_in_a_row_in_the_left_column() == "X" ||
+        rules->three_in_a_row_in_the_middle_column() == "X" ||
+        rules->three_in_a_row_in_the_right_column() == "X" ||
+        rules->three_in_a_row_in_the_left_diagonal() == "X" ||
+        rules->three_in_a_row_in_the_right_diagonal() == "X") {
+      cout << "The winner is Player 1!" << endl; 
+    }
+
+    if (rules->three_in_a_row_in_the_top_row() == "O" ||
+        rules->three_in_a_row_in_the_middle_row() == "O" ||
+        rules->three_in_a_row_in_the_bottom_row() == "O" ||
+        rules->three_in_a_row_in_the_left_column() == "O" ||
+        rules->three_in_a_row_in_the_middle_column() == "O" ||
+        rules->three_in_a_row_in_the_right_column() == "O" ||
+        rules->three_in_a_row_in_the_left_diagonal() == "O" ||
+        rules->three_in_a_row_in_the_right_diagonal() == "O") {
+      cout << "The winner is Player 2!" << endl; 
+    }
+
+    if (rules->is_board_full() == true) {
+      cout << "You've run out of room, this game is a draw!" << endl;
+    }
+  }
+
   void start()
   {
     string user_input = "";
@@ -305,6 +334,8 @@ public:
 
       switch_player();
     }
+
+    print_winner();
   }
 };
 
