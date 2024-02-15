@@ -282,16 +282,24 @@ public:
     string user_input = "";
     player_turn = 1;
 
+    cout << "Welcome to Tic Tac Toe!\nThe goal is to get three in a row.\nPlayer 1 will be X's, and Player 2 will be O's" << endl;
+
     while (rules->in_progress())
     {
+      cout << endl;
+
       cout << creator->formatted_board();
-      cout << "Which cell?" << endl;
-      cin >> user_input;
+
+      cout << endl << endl;
 
       if (player_turn == 1) {
+        cout << "Player 1's turn: Which cell?" << endl;
+        cin >> user_input;
         board->make_move(stoi(user_input), 'X');
       }
       if (player_turn == 2) {
+        cout << "Player 2's turn: Which cell?" << endl;
+        cin >> user_input;
         board->make_move(stoi(user_input), 'O');
       }
 
