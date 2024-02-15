@@ -257,6 +257,7 @@ private:
   Board *board;
   Rules *rules;
   ConsoleBoardCreator *creator;
+  int player_turn;
 
 public:
   Game(Board *board_ptr, Rules *rules_ptr, ConsoleBoardCreator *creator_ptr)
@@ -266,16 +267,35 @@ public:
     creator = creator_ptr;
   }
 
+  void switch_player()
+  {
+    if (player_turn == 1) {
+      player_turn = 2;
+    }
+    else if (player_turn == 2) {
+      player_turn = 1;
+    }
+  }
+
   void start()
   {
     string user_input = "";
+    player_turn = 1;
 
     while (rules->in_progress())
     {
       cout << creator->formatted_board();
       cout << "Which cell?" << endl;
       cin >> user_input;
-      board->make_move(stoi(user_input), 'X');
+
+      if (player_turn == 1) {
+        board->make_move(stoi(user_input), 'X');
+      }
+      if (player_turn == 2) {
+        board->make_move(stoi(user_input), 'O');
+      }
+
+      switch_player();
     }
   }
 };
