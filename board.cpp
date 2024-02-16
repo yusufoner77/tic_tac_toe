@@ -90,10 +90,6 @@ public:
 
   bool in_progress()
   {
-    // We need to ask the Board object if there are any spaces still open.
-    // We also need to check if there a winner - three in a row, vertical, horizontal, or diagonal.
-    // The code below is a partial implementation where we check for three in a row in the top row.
- 
 
     if (three_in_a_row_in_the_top_row() != "_")
     {
@@ -279,31 +275,28 @@ public:
 
   void print_winner()
   {
-    if (rules->three_in_a_row_in_the_top_row() == "X" ||
-        rules->three_in_a_row_in_the_middle_row() == "X" ||
-        rules->three_in_a_row_in_the_bottom_row() == "X" ||
-        rules->three_in_a_row_in_the_left_column() == "X" ||
-        rules->three_in_a_row_in_the_middle_column() == "X" ||
-        rules->three_in_a_row_in_the_right_column() == "X" ||
-        rules->three_in_a_row_in_the_left_diagonal() == "X" ||
-        rules->three_in_a_row_in_the_right_diagonal() == "X") {
+    if (three_in_a_row("X")) {
       cout << "The winner is Player 1!" << endl; 
     }
 
-    if (rules->three_in_a_row_in_the_top_row() == "O" ||
-        rules->three_in_a_row_in_the_middle_row() == "O" ||
-        rules->three_in_a_row_in_the_bottom_row() == "O" ||
-        rules->three_in_a_row_in_the_left_column() == "O" ||
-        rules->three_in_a_row_in_the_middle_column() == "O" ||
-        rules->three_in_a_row_in_the_right_column() == "O" ||
-        rules->three_in_a_row_in_the_left_diagonal() == "O" ||
-        rules->three_in_a_row_in_the_right_diagonal() == "O") {
+    if (three_in_a_row("O")) {
       cout << "The winner is Player 2!" << endl; 
     }
 
     if (rules->is_board_full() == true) {
       cout << "You've run out of room, this game is a draw!" << endl;
     }
+  }
+
+  bool three_in_a_row(string str) {
+    return rules->three_in_a_row_in_the_top_row() == str ||
+        rules->three_in_a_row_in_the_middle_row() == str ||
+        rules->three_in_a_row_in_the_bottom_row() == str ||
+        rules->three_in_a_row_in_the_left_column() == str ||
+        rules->three_in_a_row_in_the_middle_column() == str ||
+        rules->three_in_a_row_in_the_right_column() == str ||
+        rules->three_in_a_row_in_the_left_diagonal() == str ||
+        rules->three_in_a_row_in_the_right_diagonal() == str;
   }
 
   void start()
@@ -322,13 +315,26 @@ public:
       cout << endl << endl;
 
       if (player_turn == 1) {
-        cout << "Player 1's turn: Which cell?" << endl;
+        cout << "Player 1's turn: Which cell?  ";
         cin >> user_input;
+        
+        while (rules->validate_input(stoi(user_input)) == false) {
+          cout << "Invalid input, please try again.  ";
+          cin >> user_input;
+        }
+
         board->make_move(stoi(user_input), 'X');
       }
+
       if (player_turn == 2) {
-        cout << "Player 2's turn: Which cell?" << endl;
+        cout << "Player 2's turn: Which cell?  ";
         cin >> user_input;
+
+        while (rules->validate_input(stoi(user_input)) == false) {
+          cout << "Invalid input, please try again.  ";
+          cin >> user_input;
+        }
+
         board->make_move(stoi(user_input), 'O');
       }
 
