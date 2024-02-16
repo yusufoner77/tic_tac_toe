@@ -14,7 +14,7 @@ public:
   {
     for (int i = 0; i < 9; i++)
     {
-      board[i] = '_';
+      board[i] = ' ';
     }
   }
 
@@ -87,7 +87,7 @@ public:
   bool validate_input(int input)
   {
     string current_mark = board->get_mark(input);
-    if (input < 1 || input > 9 || current_mark != "_")
+    if (input < 1 || input > 9 || current_mark != " ")
     {
       return false;
     }
@@ -149,7 +149,7 @@ public:
   bool is_board_full()
   {
     for (int i = 1; i < 10; i++) {
-      if (board->get_mark(i) == "_") {
+      if (board->get_mark(i) == " ") {
         return false;
       }
     }
@@ -159,7 +159,7 @@ public:
 
   string three_in_a_row_in_the_top_row()
   {
-    if (board->get_mark(1) == board->get_mark(2) && board->get_mark(2) == board->get_mark(3) && board->get_mark(1) != "_")
+    if (board->get_mark(1) == board->get_mark(2) && board->get_mark(2) == board->get_mark(3) && board->get_mark(1) != " ")
     {
       return board->get_mark(1);
     }
@@ -171,7 +171,7 @@ public:
 
   string three_in_a_row_in_the_middle_row()
   {
-    if (board->get_mark(4) == board->get_mark(5) && board->get_mark(5) == board->get_mark(6) && board->get_mark(4) != "_")
+    if (board->get_mark(4) == board->get_mark(5) && board->get_mark(5) == board->get_mark(6) && board->get_mark(4) != " ")
     {
       return board->get_mark(4);
     }
@@ -183,7 +183,7 @@ public:
 
   string three_in_a_row_in_the_bottom_row()
   {
-    if (board->get_mark(7) == board->get_mark(8) && board->get_mark(8) == board->get_mark(9) && board->get_mark(7) != "_")
+    if (board->get_mark(7) == board->get_mark(8) && board->get_mark(8) == board->get_mark(9) && board->get_mark(7) != " ")
     {
       return board->get_mark(7);
     }
@@ -195,7 +195,7 @@ public:
 
   string three_in_a_row_in_the_left_column()
   {
-    if (board->get_mark(1) == board->get_mark(4) && board->get_mark(4) == board->get_mark(7) && board->get_mark(1) != "_")
+    if (board->get_mark(1) == board->get_mark(4) && board->get_mark(4) == board->get_mark(7) && board->get_mark(1) != " ")
     {
       return board->get_mark(1);
     }
@@ -207,7 +207,7 @@ public:
 
   string three_in_a_row_in_the_middle_column()
   {
-    if (board->get_mark(2) == board->get_mark(5) && board->get_mark(5) == board->get_mark(8) && board->get_mark(2) != "_")
+    if (board->get_mark(2) == board->get_mark(5) && board->get_mark(5) == board->get_mark(8) && board->get_mark(2) != " ")
     {
       return board->get_mark(2);
     }
@@ -219,7 +219,7 @@ public:
 
   string three_in_a_row_in_the_right_column()
   {
-    if (board->get_mark(3) == board->get_mark(6) && board->get_mark(6) == board->get_mark(9) && board->get_mark(3) != "_")
+    if (board->get_mark(3) == board->get_mark(6) && board->get_mark(6) == board->get_mark(9) && board->get_mark(3) != " ")
     {
       return board->get_mark(3);
     }
@@ -231,7 +231,7 @@ public:
 
   string three_in_a_row_in_the_left_diagonal()
   {
-    if (board->get_mark(1) == board->get_mark(5) && board->get_mark(5) == board->get_mark(9) && board->get_mark(1) != "_")
+    if (board->get_mark(1) == board->get_mark(5) && board->get_mark(5) == board->get_mark(9) && board->get_mark(1) != " ")
     {
       return board->get_mark(1);
     }
@@ -243,7 +243,7 @@ public:
 
   string three_in_a_row_in_the_right_diagonal()
   {
-    if (board->get_mark(3) == board->get_mark(5) && board->get_mark(5) == board->get_mark(7) && board->get_mark(3) != "_")
+    if (board->get_mark(3) == board->get_mark(5) && board->get_mark(5) == board->get_mark(7) && board->get_mark(3) != " ")
     {
       return board->get_mark(3);
     }
