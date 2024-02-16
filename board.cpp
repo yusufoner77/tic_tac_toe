@@ -54,6 +54,8 @@ private:
     return " " + board->get_mark(7) + " | " + board->get_mark(8) + " | " + board->get_mark(9) + " "; 
   }
 
+  
+
 public:
   ConsoleBoardCreator(Board *inputted_board)
   {
@@ -64,6 +66,11 @@ public:
   {
     // This implementation is incomplete. Make sure you fill in the rest! It would also help to break this long string up using some private methods.
     return first_row() + make_line() + second_row() + make_line() + third_row();
+  }
+
+  string print_map()
+  {
+    return " 1 | 2 | 3 " + make_line() + " 4 | 5 | 6 " + make_line() + " 7 | 8 | 9 ";
   }
 };
 
@@ -305,6 +312,7 @@ public:
     player_turn = 1;
 
     cout << "Welcome to Tic Tac Toe!\nThe goal is to get three in a row.\nPlayer 1 will be X's, and Player 2 will be O's" << endl;
+    cout << "Here is a map of the cells:" << endl << endl << creator->print_map() << endl;
 
     while (rules->in_progress())
     {
