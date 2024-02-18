@@ -8,6 +8,8 @@ Rules::Rules(Board *inputted_board)
     board = inputted_board;
 }
 
+// Only inputs of 1-9 are acceptable
+
 bool Rules::validate_input(int input)
 {
     string current_mark = board->get_mark(input);
@@ -18,6 +20,8 @@ bool Rules::validate_input(int input)
 
     return true;
 }
+
+// The following functions check for three in a row and return X or O if its found. If not, it returns an underscore.
 
 string Rules::three_in_a_row_in_the_top_row()
 {
@@ -115,6 +119,8 @@ string Rules::three_in_a_row_in_the_right_diagonal()
     }
 }
 
+// returns false if any element in the array is not yet marked
+
 bool Rules::is_board_full()
 {
     for (int i = 1; i < 10; i++) {
@@ -125,6 +131,8 @@ bool Rules::is_board_full()
 
     return true;
 }
+
+// These conditions will end the game if they are true. Three in a row or a full board will end the game.
 
 bool Rules::in_progress()
 {

@@ -21,6 +21,8 @@ void Game::switch_player()
     }
 }
 
+// Intended to take in "X" or "O" as argument and return true if they won    
+
 bool Game::three_in_a_row(string str) {
     return rules->three_in_a_row_in_the_top_row() == str ||
         rules->three_in_a_row_in_the_middle_row() == str ||
@@ -53,6 +55,8 @@ void Game::start()
     string user_input = "";
     player_turn = 1;
 
+    // Intro, instructions, and printing a map of cell numbers
+
     cout << "Welcome to Tic Tac Toe!\nThe goal is to get three in a row.\nPlayer 1 will be X's, and Player 2 will be O's" << endl;
     cout << "Here is a map of the cells:" << endl << endl << creator->print_map() << endl;
 
@@ -68,6 +72,7 @@ void Game::start()
         cout << "Player 1's turn: Which cell?  ";
         cin >> user_input;
         
+        //Catches invalid inputs and loops until valid input is provided
         while (rules->validate_input(stoi(user_input)) == false) {
           cout << "Invalid input, please try again.  ";
           cin >> user_input;
