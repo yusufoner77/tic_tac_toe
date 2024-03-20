@@ -95,6 +95,8 @@ void Game::start()
 
       switch_player();
     }
+    
+    cout << endl << creator->formatted_board() << endl << endl;
 
     print_winner();
 }
